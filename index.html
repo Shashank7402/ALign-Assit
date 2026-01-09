@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Align Assist | Healthcare Care Coordination</title>
+<meta name="description" content="Align Assist — Patient care coordination, clinical workflow support, and free healthcare consultations.">
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#1e5fd8;
+  --primary-dark:#164bb2;
+  --light:#f4f8ff;
+  --white:#ffffff;
+  --text:#1f2933;
+  --muted:#6b7280;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--text);line-height:1.7}
+a{text-decoration:none;color:inherit}
+img{width:100%;display:block}
+.container{max-width:1200px;margin:auto;padding:90px 24px}
+
+/* HEADER */
+header{position:sticky;top:0;background:rgba(255,255,255,.96);border-bottom:1px solid #e5e7eb;z-index:10}
+nav{max-width:1200px;margin:auto;display:flex;justify-content:space-between;align-items:center;padding:18px 24px}
+.logo{font-weight:700;font-size:1.2rem;color:var(--primary)}
+nav a{margin-left:22px;color:var(--muted)}
+
+/* SERVICES – SEPARATE GRIDS */
+.service-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+  gap:32px;
+  margin-top:30px;
+  margin-bottom:60px;
+}
+
+.service-card{
+  background:#ffffff;
+  padding:36px;
+  border-radius:18px;
+  box-shadow:0 15px 40px rgba(30,95,216,.12);
+  transition:.3s ease;
+}
+
+.service-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 25px 55px rgba(30,95,216,.22);
+}
+
+.service-card h3{
+  color:var(--primary);
+  margin-bottom:14px;
+}
+
+.services-intro{
+  max-width:900px;
+  margin-bottom:50px;
+}
+/* VIRTUAL ASSISTANT */
+.chatbot-btn{
+  position:fixed;
+  bottom:22px;
+  right:22px;
+  background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+  color:white;
+  padding:16px 20px;
+  border-radius:50px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:0 15px 35px rgba(30,95,216,.4);
+  z-index:999;
+}
+
+.chatbot-box{
+  position:fixed;
+  bottom:90px;
+  right:22px;
+  width:340px;
+  max-height:480px;
+  background:white;
+  border-radius:18px;
+  box-shadow:0 25px 60px rgba(0,0,0,.25);
+  display:none;
+  flex-direction:column;
+  overflow:hidden;
+  z-index:999;
+}
+
+.chatbot-header{
+  background:var(--primary);
+  color:white;
+  padding:16px;
+  font-weight:600;
+}
+
+.chatbot-messages{
+  padding:16px;
+  flex:1;
+  overflow-y:auto;
+  font-size:.95rem;
+}
+
+.chatbot-msg{
+  margin-bottom:12px;
+  padding:10px 14px;
+  border-radius:12px;
+  max-width:85%;
+}
+
+.bot{
+  background:#f1f5ff;
+  color:#1f2933;
+}
+
+.user{
+  background:var(--primary);
+  color:white;
+  margin-left:auto;
+}
+
+.chatbot-input{
+  display:flex;
+  border-top:1px solid #e5e7eb;
+}
+
+.chatbot-input input{
+  flex:1;
+  border:none;
+  padding:14px;
+  outline:none;
+}
+
+.chatbot-input button{
+  border:none;
+  background:var(--primary);
+  color:white;
+  padding:0 18px;
+  cursor:pointer;
+}
+
+
+
+
+/* BUTTONS */
+.btn{padding:14px 28px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--primary-dark));color:white;font-weight:600}
+.btn.secondary{background:white;color:var(--primary-dark);border:1.5px solid var(--primary)}
+
+/* HERO WITH BACKGROUND IMAGE */
+.hero{
+  position: relative;
+  text-align: center;
+  padding: 160px 24px;
+  color: white;
+  background:
+    linear-gradient(
+      rgba(30,95,216,0.75),
+      rgba(30,95,216,0.75)
+    ),
+    url("images/medical-team-discusses-x-ray-scan-results-patient-care-treatment-center.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.hero h1{
+  font-size: 2.8rem;
+  max-width: 900px;
+  margin: auto;
+  color: white;
+}
+
+.hero p{
+  max-width: 760px;
+  margin: 24px auto;
+  color: #eaf0ff;
+}
+
+
+/* IMAGE PALETTE */
+.image-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:28px;margin-top:50px}
+.image-card{position:relative;overflow:hidden;border-radius:18px;box-shadow:0 15px 40px rgba(0,0,0,.12)}
+.image-card img{height:240px;object-fit:cover}
+.image-card span{position:absolute;bottom:0;left:0;right:0;padding:14px 18px;background:linear-gradient(to top,rgba(0,0,0,.65),transparent);color:white;font-weight:600}
+
+/* SECTIONS */
+section.alt{background:var(--light)}
+h2{font-size:2.1rem;margin-bottom:18px}
+p{color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:34px;margin-top:52px}
+.card{background:white;padding:32px;border-radius:16px;box-shadow:0 10px 30px rgba(0,0,0,.08)}
+
+/* ABOUT BACKGROUND IMAGE — RESTORED */
+.about-bg{
+  background:
+    linear-gradient(rgba(30,95,216,.85),rgba(30,95,216,.85)),
+    url("images/labor-union-members-working-together.jpg");
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  color:white;
+}
+.about-bg p{color:#eaf0ff}
+.about-bg .card{
+  background:rgba(255,255,255,.12);
+  color:white;
+}
+
+/* FORMS */
+input,textarea{width:100%;padding:12px;border-radius:8px;border:1px solid #ccc}
+
+/* FOOTER */
+footer{background:#0f172a;color:#9ca3af;text-align:center}
+footer .container{padding:60px 24px}
+</style>
+</head>
+
+<body>
+
+<header>
+<nav>
+<div class="logo">Align Assist</div>
+<div>
+<a href="#services">Services</a>
+<a href="#vision">Vision</a>
+<a href="#consultation">Consultation</a>
+<a href="#contact" class="btn">Get Support</a>
+</div>
+</nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+<h1>Coordinated care. Clear workflows. Patient-first support.</h1>
+<p>
+Align Assist is primarily a medical billing company providing HIPAA-compliant billing solutions across all specialties.
+We support practices from startup to retirement using certified coding experts, advanced EHR systems,
+and technology-driven billing methods. With over 10 years of experience and 200+ satisfied clients,
+we help providers improve revenue, reduce stress, and focus on patient care.
+</p>
+<div class="actions">
+<a href="#consultation" class="btn">Free Consultation</a>
+<a href="#contact" class="btn secondary">Contact Us</a>
+</div>
+</section>
+
+<!-- IMAGE PALETTE -->
+<section class="container">
+<h2>Care Coordination in Action</h2>
+<p>
+Our coordinated care model brings patients, providers, and care teams together.
+From consultations to secure records and optimized workflows, we ensure accuracy,
+clarity, and efficiency at every stage.
+</p>
+<div class="image-grid">
+<div class="image-card"><img src="images/team-doctors-meeting.jpg"><span>Care Team Collaboration</span></div>
+<div class="image-card"><img src="images/team collaboration.png"><span>Patient Consultations</span></div>
+<div class="image-card"><img src="images/financial-expert-signing-contract-secure-insurance-agency.jpg"><span>Clinical Workflow Support</span></div>
+<div class="image-card"><img src="images/male-doctor-taking-notes-while-working-with-colleagues-medical-clinic.jpg"><span>Secure Health Records</span></div>
+</div>
+</section>
+
+
+<section id="services" class="container alt">
+<h2>OUR SERVICES</h2>
+
+<p class="services-intro">
+Align Assist is a billing company offering advanced and high-quality practice management
+services to medical and non-medical specialties including physiotherapy, orthopedics,
+dermatology, neurology, cardiology, oncology, internal medicine, gynecology, and many more.
+</p>
+
+<!-- GRID 1 -->
+<div class="service-grid">
+  <div class="service-card">
+    <h3>01. MEDICAL BILLING & CODING</h3>
+    <p>
+    Revive your financial performance with expert billing and coding professionals backed by
+    over 10 years of combined experience. Accurate billing ensures faster reimbursements and
+    prevents costly claim rejections.
+    </p>
+  </div>
+</div>
+
+<!-- GRID 2 -->
+<div class="service-grid">
+  <div class="service-card">
+    <h3>02. COMPREHENSIVE CHART AUDITING</h3>
+    <p>
+    Maximize returns and reduce accounts receivable through expert chart audits.
+    We ensure correct coding, regulatory compliance, and adherence to payer-specific rules
+    for stronger financial outcomes.
+    </p>
+  </div>
+</div>
+
+<!-- GRID 3 -->
+<div class="service-grid">
+  <div class="service-card">
+    <h3>03. REVENUE CYCLE MANAGEMENT</h3>
+    <p>
+    Complete revenue cycle management from patient check-in to final payment.
+    With certified coders and a 99.9% claim acceptance rate, we manage claims, statements,
+    follow-ups, and detailed reporting.
+    </p>
+  </div>
+</div>
+
+<!-- GRID 4 -->
+<div class="service-grid">
+  <div class="service-card">
+    <h3>04. MANAGING WORKFLOW & TRAINING</h3>
+    <p>
+    Long-term operational improvement through staff training, compliance education,
+    workflow optimization, and productivity enhancement to strengthen your practice.
+    </p>
+  </div>
+</div>
+
+<!-- GRID 5 -->
+<div class="service-grid">
+  <div class="service-card">
+    <h3>05. ACCOUNT RECEIVABLES & DENIAL MANAGEMENT</h3>
+    <p>
+    Recover lost revenue with rigorous AR follow-ups and denial resolution.
+    We identify root causes, resubmit claims efficiently, and ensure timely reimbursements
+    to protect your cash flow.
+    </p>
+  </div>
+</div>
+
+</section>
+<!-- FREE CONSULTATION -->
+<section id="consultation" class="container alt">
+  <h2>Book a Free Consultation</h2>
+  <p>
+    Speak with our billing and care coordination experts.
+    Get personalized guidance for your practice — completely free.
+  </p>
+
+  <div class="grid">
+    <!-- FORM -->
+    <div class="card">
+      <form action="mailto:support@alignassist.org" method="POST" enctype="text/plain">
+        
+        <label>Full Name</label>
+        <input type="text" name="Name" placeholder="Your full name" required>
+
+        <label>Email Address</label>
+        <input type="email" name="Email" placeholder="you@example.com" required>
+
+        <label>Phone Number</label>
+        <input type="tel" name="Phone" placeholder="+1 832-645-0023" required>
+
+        <label>How can we help?</label>
+        <textarea name="Message" rows="4" placeholder="Billing, RCM, AR, Denials, etc."></textarea>
+
+        <button type="submit" class="btn" style="margin-top:18px;">
+          Book Free Consultation
+        </button>
+
+      </form>
+    </div>
+
+    <!-- INFO -->
+    <div class="card">
+      <h3>What Happens Next?</h3>
+      <p>✔ Our team reviews your request</p>
+      <p>✔ A specialist contacts you within 24 hours</p>
+      <p>✔ We analyze your billing & workflow needs</p>
+      <p>✔ You receive actionable recommendations</p>
+
+      <p style="margin-top:20px;font-weight:600;">
+        📞 Prefer to talk now?
+      </p>
+
+      <p>
+        <div style="margin-top:14px;"></div>
+        <a href="tel:+18326450023" class="btn secondary">          
+          Call 832-645-0023
+        </a>
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- VIRTUAL ASSISTANT -->
+<div class="chatbot-btn" onclick="toggleChat()">💬 ALignAssist Assistant</div>
+
+<div class="chatbot-box" id="chatbot">
+  <div class="chatbot-header">Align Assist Virtual Assistant</div>
+  <div class="chatbot-messages" id="messages">
+    <div class="chatbot-msg bot">
+      Hello 👋 I’m your virtual assistant.<br>
+      How can I help you today?
+    </div>
+    <div class="chatbot-msg bot">• Medical Billing & Coding</div>
+    <div class="chatbot-msg bot">• Revenue Cycle Management</div>
+    <div class="chatbot-msg bot">• Free Consultation</div>
+    <div class="chatbot-msg bot">Type your question below 👇</div>
+  </div>
+  <div class="chatbot-input">
+    <input type="text" id="userInput" placeholder="Ask something..." />
+    <button onclick="sendMsg()">Send</button>
+  </div>
+</div>
+<script>
+function toggleChat(){
+  const chat = document.getElementById("chatbot");
+  chat.style.display = chat.style.display === "flex" ? "none" : "flex";
+}
+
+function sendMsg(){
+  const input = document.getElementById("userInput");
+  const msg = input.value.trim();
+  if(!msg) return;
+
+  const messages = document.getElementById("messages");
+
+  messages.innerHTML += `<div class="chatbot-msg user">${msg}</div>`;
+  input.value = "";
+
+  setTimeout(()=>{
+    messages.innerHTML += `
+      <div class="chatbot-msg bot">
+        Thanks for your message 😊<br>
+        Our support team will contact you shortly.<br><br>
+        📞 832-645-0023<br>
+        ✉ support@alignassist.org
+      </div>`;
+    messages.scrollTop = messages.scrollHeight;
+  },700);
+}
+</script>
+
+
+<!-- VISION / MISSION / WHY CHOOSE US -->
+<section id="vision" class="container alt">
+<h2>Our Vision & Mission</h2>
+<div class="grid">
+<div class="card">
+<h3>Our Vision</h3>
+<p>To be a globally preferred healthcare organization and make a meaningful difference in the healthcare ecosystem.</p>
+</div>
+<div class="card">
+<h3>Our Mission</h3>
+<p>We improve the financial life of healthcare providers, giving them the freedom to focus entirely on patient care.</p>
+</div>
+</div>
+
+<h2 style="margin-top:70px">Why Choose Us</h2>
+<div class="grid">
+<div class="card">
+<p>✔ 100% HIPAA-compliant process</p>
+<p>✔ 98% claims paid on first submission</p>
+<p>✔ Certified coding experts</p>
+<p>✔ Faster reimbursements</p>
+</div>
+<div class="card">
+<p>✔ Reduced staffing and operating costs</p>
+<p>✔ Denial follow-up by experts</p>
+<p>✔ Save up to 70% on operations</p>
+<p>✔ No staff training burden</p>
+</div>
+<div class="card">
+<p>✔ Dedicated practice manager</p>
+<p>✔ Continuous claim follow-ups</p>
+<p>✔ Quick billing query responses</p>
+<p>✔ Maximum collections & ROI</p>
+</div>
+</div>
+</section>
+
+<!-- ABOUT WITH BACKGROUND IMAGE -->
+<section id="about" class="container about-bg">
+<h2>About Align Assist</h2>
+<p>
+Align Assist is built on a patient-first philosophy.
+Our leadership combines healthcare expertise with operational excellence to deliver reliable,
+ethical, and efficient billing and coordination services.
+</p>
+<div class="grid">
+<div class="card"><h3>Puja Charles — CEO</h3><p>Visionary leadership focused on patient-centered healthcare.</p></div>
+<div class="card"><h3>Adnan — Director</h3><p>Operational excellence and compliance-driven workflows.</p></div>
+<div class="card"><h3>Account & Sales Manager</h3><p>Client relationships and practice coordination.</p></div>
+</div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="container">
+<h2>Contact Us</h2>
+<div class="grid">
+<div class="card">
+<p>📍 6810 FM 1960 Rd W, Houston, TX 77069</p>
+<p>📞 Account & Sales: <a href="tel:+18326450023">832-645-0023</a></p>
+<p>📞 CEO: <a href="tel:+12812269263">281-226-9263</a></p>
+<p>📞 Director: <a href="tel:+12812538489">281-253-8489</a></p>
+<p>✉ support@alignassist.org</p>
+</div>
+</div>
+</section>
+
+<footer>
+<div class="container">
+<p>© 2025 Align Assist. All rights reserved.</p>
+</div>
+</footer>
+
+</body>
+</html>
